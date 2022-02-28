@@ -1,0 +1,63 @@
+.specific-stats-card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0px;
+  list-style-type: none;
+  margin-top: 40px;
+}
+.specific-stats-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 264px;
+  height: 232px;
+  border-radius: 12px;
+}
+.specific-stats-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.specific-stats-image {
+  width: 38px;
+  height: 38px;
+}
+.specific-stats-count {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+.specific-stats-card-confirmed {
+  color: #ff073a;
+}
+.specific-stats-card-active {
+  color: #007bff;
+}
+.specific-stats-card-recovered {
+  color: #28a745;
+}
+.specific-stats-card-deceased {
+  color: #6c757d;
+}
+
+.specific-stats-card-bg-confirmed {
+  background-color: #331427;
+}
+.specific-stats-card-bg-active {
+  background-color: #132240;
+}
+.specific-stats-card-bg-recovered {
+  background-color: #182829;
+}
+.specific-stats-card-bg-deceased {
+  background-color: #212230;
+}

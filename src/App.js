@@ -1,3 +1,10 @@
+import {Switch, Route} from 'react-router-dom'
+
+import Home from './components/Home'
+import SpecificState from './components/SpecificState'
+import About from './components/About'
+import NotFound from './components/NotFound'
+
 import './App.css'
 
 const statesList = [
@@ -147,6 +154,13 @@ const statesList = [
   },
 ]
 
-const App = () => <div>Hello World</div>
+const App = () => (
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route exact path="/about" component={About} />
+    <Route exact path="/state/:stateCode" component={SpecificState} />
+    <NotFound />
+  </Switch>
+)
 
 export default App

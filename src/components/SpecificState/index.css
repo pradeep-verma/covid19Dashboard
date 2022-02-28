@@ -1,0 +1,124 @@
+.specific-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1146px;
+  margin-top: 40px;
+}
+.state-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+.state-date-container {
+}
+.state-name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 21px;
+  background: rgba(2, 132, 199, 0.16);
+  border-radius: 32px;
+  height: 64px;
+  width: 312px;
+}
+.state-name {
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 48px;
+  color: #0ea5e9;
+}
+.update-date {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #cbd5e1;
+}
+.tested-container {
+}
+.tested-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #94a3b8;
+  text-align: right;
+  margin-top: 0px;
+}
+.tested-value {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: right;
+  color: #94a3b8;
+  margin-top: 0px;
+}
+
+/* Top District */
+.specific-state-district-container {
+  width: 100%;
+}
+.specific-state-top-district-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+}
+.specific-state-top-districts-container {
+  list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.specific-state-top-districts-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 212px;
+  margin-right: 70px;
+}
+.specific-state-top-districts-cases {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #94a3b8;
+  margin-right: 21px;
+}
+.specific-state-top-districts-name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #94a3b8;
+}
+.specific-state-district-text-confirmed {
+  color: #ff073a;
+}
+.specific-state-district-text-active {
+  color: #007bff;
+}
+.specific-state-district-text-recovered {
+  color: #28a745;
+}
+.specific-state-district-text-deceased {
+  color: #6c757d;
+}
