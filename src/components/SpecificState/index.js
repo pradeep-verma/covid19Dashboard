@@ -5,6 +5,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import TotalStateStats from '../TotalStateStats'
 import TopDistrictBarGraph from '../TopDistrictBarGraph'
+import DailySpreadTrendsGraph from '../DailySpreadTrendsGraph'
 import './index.css'
 
 const statesList = [
@@ -185,7 +186,7 @@ class SpecificState extends Component {
     apiStatus: apiStatusConstants.initial,
     specificStateData: {},
     activeTab: 'CONFIRMED',
-    specificStateTimelineData: '',
+    specificStateTimelineData: [],
   }
 
   componentDidMount() {
@@ -230,9 +231,30 @@ class SpecificState extends Component {
     const apiTimelineUrl = `https://apis.ccbp.in/covid19-timelines-data/${stateCode}`
     const response = await fetch(apiTimelineUrl)
     const timelineData = await response.json()
-    console.log(timelineData)
+    // console.log(timelineData[stateCode])
+    const resultList = []
+    const keyNames = Object.keys(timelineData[stateCode].dates)
 
-    this.setState({specificStateTimelineData: timelineData})
+    // console.log(keyNames)
+    keyNames.forEach(date => {
+      //   const confirmed = date.total.confirmed
+      //   const deceased = date.total.deceased
+      //   const recovered = date.total.recovered
+      //   const tested = date.total.tested
+      const {total} = timelineData[stateCode].dates[date]
+
+      resultList.push({
+        date,
+        confirmed: total.confirmed,
+        deceased: total.deceased,
+        recovered: total.recovered,
+        tested: total.tested,
+        active: total.confirmed - (total.deceased + total.recovered),
+      })
+    })
+
+    // console.log(resultList)
+    this.setState({specificStateTimelineData: resultList})
   }
 
   convertObjectsDataIntoListItems = districtData => {
@@ -270,7 +292,7 @@ class SpecificState extends Component {
   }
 
   renderTopDistrict = () => {
-    const {specificStateData, activeTab} = this.state
+    const {specificStateData, activeTab, specificStateTimelineData} = this.state
     const {districts} = specificStateData
     // console.log(districts)
     // console.log(specificStateData)
@@ -278,7 +300,7 @@ class SpecificState extends Component {
     const activeStats = statsConstants.find(
       eachItem => eachItem.statsId === activeTab,
     ).statsValue
-    console.log(activeStats)
+    // console.log(activeStats)
 
     return (
       <div className="specific-state-district-container">
@@ -302,26 +324,48 @@ class SpecificState extends Component {
             </li>
           ))}
         </ul>
-        <TopDistrictBarGraph activeStats={activeStats} />
+        <TopDistrictBarGraph
+          activeTab={activeTab}
+          timelineData={specificStateTimelineData}
+        />
+      </div>
+    )
+  }
+
+  renderDailySpreadTrends = () => {
+    const {specificStateTimelineData} = this.state
+
+    return (
+      <div className="daily-spread-trends-container">
+        <h1 className="daily-spread-trends-title">Daily Spread Trends</h1>
+        <DailySpreadTrendsGraph
+          specificStateTimelineData={specificStateTimelineData}
+        />
       </div>
     )
   }
 
   renderSpecificState = () => {
     const {specificStateData, activeTab} = this.state
+    console.log(specificStateData)
+    const {stateName, total, meta} = specificStateData
+    const lastUpdated = meta.last_updated
+    const date = new Date(lastUpdated)
+    console.log(date)
+
     return (
       <>
         <div className="specific-state-container">
           <div className="state-title-container">
             <div className="state-date-container">
               <div className="state-name-container">
-                <p className="state-name">Andhra Pradesh</p>
+                <p className="state-name">{stateName}</p>
               </div>
-              <p className="update-date">Last update on march 28th 2021.</p>
+              <p className="update-date">{`Last update on ${lastUpdated}.`}</p>
             </div>
             <div className="tested-container">
               <p className="tested-text">Tested</p>
-              <p className="tested-value">20239490</p>
+              <p className="tested-value">{total.tested}</p>
             </div>
           </div>
           <TotalStateStats
@@ -330,15 +374,22 @@ class SpecificState extends Component {
             onChangeActiveTab={this.onChangeActiveTab}
           />
           {this.renderTopDistrict()}
+          {this.renderDailySpreadTrends()}
         </div>
         <Footer />
       </>
     )
   }
 
-  renderLoader = () => (
-    <div className="home-loader-container" testid="homeRouteLoader">
-      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+  renderStateDetailsLoader = () => (
+    <div className="home-loader-container" testid="stateDetailsLoader">
+      <Loader type="TailSpin" color="#007BFF" height="50" width="50" />
+    </div>
+  )
+
+  renderTimelinesDataLoader = () => (
+    <div className="home-loader-container" testid="timelinesDataLoader">
+      <Loader type="TailSpin" color="#007BFF" height="50" width="50" />
     </div>
   )
 
@@ -349,7 +400,7 @@ class SpecificState extends Component {
       case apiStatusConstants.success:
         return this.renderSpecificState()
       case apiStatusConstants.inProgress:
-        return this.renderLoader()
+        return this.renderStateDetailsLoader()
       default:
         return null
     }

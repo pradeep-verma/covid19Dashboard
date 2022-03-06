@@ -1,0 +1,48 @@
+.daily-spread-trends-graphs-container {
+}
+.line-chart-container {
+  margin-bottom: 32px;
+  border-radius: 12px;
+  padding: 20px;
+  height: 328px;
+  width: 1146px;
+}
+.line-chart-bg-confirmed {
+  background-color: #331427;
+}
+.line-chart-bg-active {
+  background-color: #132240;
+}
+.line-chart-bg-recovered {
+  background-color: #182829;
+}
+.line-chart-bg-deceased {
+  background-color: #1c1c2b;
+}
+.line-chart-bg-tested {
+  background-color: #230f41;
+}
+.line-chart-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right;
+  margin-bottom: 0px;
+}
+.line-chart-text-confirmed {
+  color: #ff073a;
+}
+.line-chart-text-active {
+  color: #007bff;
+}
+.line-chart-text-recovered {
+  color: #27a243;
+}
+.line-chart-text-deceased {
+  color: #6c757d;
+}
+.line-chart-text-tested {
+  color: #9673b9;
+}

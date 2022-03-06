@@ -280,9 +280,9 @@ class Home extends Component {
     const totalStats = stateWiseStatsList.find(
       eachState => eachState.stateCode === 'TT',
     )
-    console.log(totalStats)
+    // console.log(totalStats)
 
-    console.log(totalStats.confirmed)
+    // console.log(totalStats.confirmed)
     return (
       <ul className="home-stats-card-container">
         <li
@@ -397,7 +397,7 @@ class Home extends Component {
 
   renderLoader = () => (
     <div className="home-loader-container" testid="homeRouteLoader">
-      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+      <Loader type="TailSpin" color="#007BFF" height="50" width="50" />
     </div>
   )
 

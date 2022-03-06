@@ -20,11 +20,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px 21px;
   background: rgba(2, 132, 199, 0.16);
   border-radius: 32px;
-  height: 64px;
-  width: 312px;
 }
 .state-name {
   font-family: HK Grotesk;
@@ -33,6 +30,7 @@
   font-size: 32px;
   line-height: 48px;
   color: #0ea5e9;
+  margin: 8px 38px 8px 38px;
 }
 .update-date {
   font-family: Roboto;
@@ -121,4 +119,17 @@
 }
 .specific-state-district-text-deceased {
   color: #6c757d;
+}
+
+/* Daily Spread Trends */
+.daily-spread-trends-container {
+  margin-top: 30px;
+}
+.daily-spread-trends-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  color: #cbd5e1;
 }
